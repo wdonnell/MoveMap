@@ -12,9 +12,11 @@ namespace MoveMap
     {
         static void Main(string[] args)
         {
-            String input = File.ReadAllText("./plot_summary.txt"); //taken from http://www.themoviespoiler.com/2014Spoilers/Whiplash.html
+            //String input = File.ReadAllText("./plot_summary.txt"); //taken from http://www.themoviespoiler.com/2014Spoilers/Whiplash.html
+            String input = File.ReadAllText("./plot_summary_birdman.txt"); //taken from http://www.themoviespoiler.com/2014Spoilers/Birdman.html
             List<String> scenes = new List<string>(input.Split('\n'));
-            List<String> characters = new List<string>() { "Andrew", "Fletcher", "Tanner", "Metz", "Jim", "Nicole", "Connolly" };
+            //List<String> characters = new List<string>() { "Andrew", "Fletcher", "Tanner", "Metz", "Jim", "Nicole", "Connolly" };
+            List<String> characters = new List<string>() { "Riggan", "Birdman", "Jake", "Ralph", "Sam", "Lesley", "Laura", "Mike", "Sylvia", "Tabitha" };
 
             int i = 0;
             foreach (String scene in scenes)
