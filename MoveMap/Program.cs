@@ -50,8 +50,8 @@ namespace MoveMap
                     {
                         if(a != b) //dont' link characters to themselves
                         { 
-                            String[] key = new String[] {a.name, b.name};
-                            key = key.OrderBy(x => x).ToArray();
+                            Character[] key = new Character[] {a, b};
+                            key = key.OrderBy(x => x.name).ToArray();
                             var link = new CharacterLink { a = key[0], b = key[1], value = 1};
                             if (!links.Contains(link)) //this is a total mess.  IMPROVE THIS PLEASE
                             {
@@ -67,7 +67,7 @@ namespace MoveMap
                 }
             }
             double lengthFactor = 7; //TODO: make this dependent on average or max link score.  hardcoding for now, obvs
-            double sizefactor = 25; //ohh this is so bad and lazy.  fix later
+            double sizefactor = 15; //ohh this is so bad and lazy.  fix later
             //output neato file
             String output = "strict graph G {\n";
             foreach (Character c in characters)
@@ -76,7 +76,7 @@ namespace MoveMap
             }
             foreach (CharacterLink link in links)
             {
-                output += "\t\"" + link.a + "\" -- \"" + link.b + "\" [len= " + (lengthFactor / (double)link.value) * 2 + "];\n";
+                output += "\t\"" + link.a.name + "\" -- \"" + link.b.name + "\" [len= " + (((double)link.a.links.Sum(x => x.Value) / sizefactor) + ((lengthFactor / (double)link.value) * 2)) + "];\n";
             }
             output += "}\n";
             File.WriteAllText("./output.neato", output);

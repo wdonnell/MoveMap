@@ -31,5 +31,11 @@ namespace MoveMap
                 }
             }
         }
+
+        public override bool Equals(Object obj)
+        {
+            var other = (Character)obj;
+            return (name == other.name);
+        }
     }
 }

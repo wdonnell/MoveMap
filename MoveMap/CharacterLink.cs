@@ -8,8 +8,8 @@ namespace MoveMap
 {
     class CharacterLink : Object
     {
-        public String a;
-        public String b;
+        public Character a;
+        public Character b;
         public int value = 0;
 
         public override bool Equals(Object obj)
